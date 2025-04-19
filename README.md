@@ -52,7 +52,7 @@ outbox_log
 |property|type|
 |-|-|
 |id| uuid primary key|
-|source_app| uuid not null|
+|source_app| bigint not null|
 |payload | jsonb not null|
 |created_at|timestamptz DEFAULT now()|
 |processed| boolean default false|
