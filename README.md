@@ -71,6 +71,7 @@ source_app
 - [ ] Retry e dead-letter queue
 - [ ] Logs com enriquecimento automático (TraceId, Tags)
 - [ ] Painel de métricas com Prometheus + Grafana
+- [ ] Substituir pooling por listen/notify
 
 
   
