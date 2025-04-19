@@ -31,7 +31,7 @@ cd logonaut
 ```
 2. Suba os serviços com Docker:
 ```bash
-docker-compose up -d
+docker-compose -f .\docker-composer.yaml up
 ```
 3. Acesse:
 - RabbitMQ Management UI: http://localhost:15672 (guest/guest)
