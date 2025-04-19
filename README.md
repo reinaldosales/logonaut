@@ -37,6 +37,8 @@ docker-compose -f .\docker-composer.yaml up
 - RabbitMQ Management UI: http://localhost:15672 (guest/guest)
 - Kibana: http://localhost:5601
 - Mongo Express (opcional) ou pode-se utilizar o MongoDb Compass: http://localhost:8081
+  - user: root
+  - password: root
 
 ## Estrutura do Projeto
 
