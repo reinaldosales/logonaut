@@ -16,7 +16,7 @@
 
 - [.NET 8 / 9](https://dotnet.microsoft.com/)
 - [MassTransit](https://masstransit.io/) + [RabbitMQ](https://www.rabbitmq.com/)
-- [MongoDB](https://www.mongodb.com/) (Outbox Pattern)
+- [PostgreSql](https://www.postgresql.org/) (Outbox Pattern)
 - [Elasticsearch](https://www.elastic.co/) + [Kibana](https://www.elastic.co/kibana)
 - [Docker Compose](https://docs.docker.com/compose/)
 
@@ -33,12 +33,10 @@ cd logonaut
 ```bash
 docker-compose -f .\docker-composer.yaml up
 ```
-3. Acesse:
+3. Para os acessos:
 - RabbitMQ Management UI: http://localhost:15672 (guest/guest)
-- Kibana: http://localhost:5601
-- Mongo Express (opcional) ou pode-se utilizar o MongoDb Compass: http://localhost:8081
-  - user: root
-  - password: root
+- Kibana: http://localhost:5601 (elastic/kibana)
+- Azure Data Studio (PostgreSql)
 
 ## Estrutura do Projeto
 
@@ -47,29 +45,29 @@ docker-compose -f .\docker-composer.yaml up
 |Logonaut.Producer.* | Aplicações produtoras que geram logs e escrevem em suas collections de Outbox
 |Logonaut.OutboxReader | Leitor de Outboxes que publica no RabbitMQ com base em config dinâmica
 |Logonaut.Consumer | Consumidor MassTransit que recebe e envia para Elasticsearch
-|docker-compose.yml | Orquestra Mongo, RabbitMQ, Elasticsearch e Kibana
+|docker-compose.yml | Orquestra Postgres, RabbitMQ, Elasticsearch e Kibana
 
-## Exemplo de documento Outbox
+## Exemplo de entidade Outbox no Postgres
+outbox_log
+|property|type|
+|-|-|
+|id| uuid primary key|
+|source_app| uuid not null|
+|payload | jsonb not null|
+|created_at|timestamptz DEFAULT now()|
+|processed| boolean default false|
+|processed_at|timestamptz|
 
-```json
-OutboxLogs_Example
-
-{
-  "_id": ObjectId,
-  "payload": {
-    "ExampleId": 1,
-    "StartProcess": "2025-04-18T12:33:33.999",
-    "EndedProcess": "2025-04-18T12:33:35.999"
-  },
-  "level": "INFORMATION",
-  "message": "Example has been processed.",
-  "createdAt": "2025-04-18T12:33:34.777",
-  "processed": false
-}
-```
+source_app
+|property|type|
+|-|-|
+|id| serial primary key|
+|name| text unique not null|
+|enabled| boolean default false|
+|created_at| timespamtz not null|
 
 ## Roadmap
-- [x] Estrutura básica com RabbitMQ e MongoDB
+- [x] Estrutura básica com RabbitMQ e Postgres
 - [ ] Retry e dead-letter queue
 - [ ] Logs com enriquecimento automático (TraceId, Tags)
 - [ ] Painel de métricas com Prometheus + Grafana
