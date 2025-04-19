@@ -36,7 +36,7 @@ docker-compose -f .\docker-composer.yaml up
 3. Para os acessos:
 - RabbitMQ Management UI: http://localhost:15672 (guest/guest)
 - Kibana: http://localhost:5601 (elastic/kibana)
-- Azure Data Studio (PostgreSql)
+- Azure Data Studio (PostgreSql plugin | (admin/postgres))
 
 ## Estrutura do Projeto
 
