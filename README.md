@@ -26,7 +26,7 @@
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/logonaut.git
+git clone https://github.com/reinaldosales/logonaut.git
 cd logonaut
 ```
 2. Suba os serviços com Docker:
