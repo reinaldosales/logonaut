@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Logonaut.Application\Logonaut.Application.csproj" />
+      <ProjectReference Include="..\Logonaut.Domain\Logonaut.Domain.csproj" />
+      <ProjectReference Include="..\Logonaut.Infra.Data\Logonaut.Infra.Data.csproj" />
+    </ItemGroup>
+
+</Project>
