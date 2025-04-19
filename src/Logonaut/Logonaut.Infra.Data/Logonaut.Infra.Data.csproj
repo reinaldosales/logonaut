@@ -9,7 +9,6 @@
     <ItemGroup>
       <Folder Include="ContextMappers\" />
       <Folder Include="Generic\" />
-      <Folder Include="Implementations\" />
     </ItemGroup>
 
     <ItemGroup>
