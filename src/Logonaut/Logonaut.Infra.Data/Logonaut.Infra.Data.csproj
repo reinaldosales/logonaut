@@ -7,11 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="ContextMappers\" />
-      <Folder Include="Generic\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="EFCore.NamingConventions" Version="8.0.3" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.11">
         <PrivateAssets>all</PrivateAssets>

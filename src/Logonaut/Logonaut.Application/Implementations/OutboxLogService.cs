@@ -1,6 +1,7 @@
 ﻿using Logonaut.Application.Abstractions;
 using Logonaut.Domain.Abstractions;
 using Logonaut.Domain.Entities;
+using Logonaut.Domain.Models.OutboxLog;
 
 namespace Logonaut.Application.Implementations;
 
@@ -11,8 +12,10 @@ public class OutboxLogService(IOutboxLogRepository outboxLogRepository) : IOutbo
     public Task<List<OutboxLog>> GetOutboxLogsAsync()
         => _outboxLogRepository.GetOutboxLogsAsync();
 
-    public void InsertAsync(OutboxLog outboxLog)
+    public async Task InsertAsync(CreateOutboxLogModel model)
     {
-        _outboxLogRepository.InsertAsync(outboxLog);
+        OutboxLog outboxLog = OutboxLog.CreateOutboxLogModelToEntity(model);
+        
+        await _outboxLogRepository.InsertAsync(outboxLog);
     }
 }

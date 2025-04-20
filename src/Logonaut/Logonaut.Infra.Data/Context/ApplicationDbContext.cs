@@ -6,6 +6,7 @@ namespace Logonaut.Infra.Data.Context;
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
 {
     public DbSet<OutboxLog> OutboxLogs { get; set; }
+    public DbSet<SourceApp> SourceApps { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

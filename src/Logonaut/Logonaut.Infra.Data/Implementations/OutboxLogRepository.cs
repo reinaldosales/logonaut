@@ -12,8 +12,8 @@ public class OutboxLogRepository(ApplicationDbContext context) : IOutboxLogRepos
     public Task<List<OutboxLog>> GetOutboxLogsAsync()
         => _context.OutboxLogs.ToListAsync();
 
-    public void InsertAsync(OutboxLog outboxLog)
+    public async Task InsertAsync(OutboxLog outboxLog)
     {
-        _context.OutboxLogs.AddAsync(outboxLog);
+        await _context.OutboxLogs.AddAsync(outboxLog);
     }
 }
